@@ -1,0 +1,268 @@
+# Routes Config
+#
+# This file defines all application routes (Higher priority routes first)
+# No trailing slashes at the end of route string will ensure the parameter exists
+#
+
+# module:testrunner
+module:jobs
+
+# ASSETS
+GET		/public/*filepath							Static.Serve("public")
+GET		/favicon.ico								Static.Serve("public","img/favicon.png")
+
+# API
+
+GET     /portal/api/:table/list                     App.ListPortal
+GET		/portal/api/:table/list/:page				App.ListPortal
+POST	/portal/api/:table						    App.CreatePortal
+PATCH	/portal/api/:table/:id					    App.UpdatePortal
+DELETE	/portal/api/:table/:id					    App.DeletePortal
+
+POST	/:company/api/helper/:function				Api.Helper
+GET	    /:company/api/helper/:function				Api.Helper
+GET		/:company/api/:table/list/:page				Api.List
+GET		/:company/api/:table/list					Api.List
+
+POST	/:company/api/login							Api.Login
+POST	/:company/api/forgetpassword				Api.ForgetPassword
+
+POST	/:company/api/:table						Api.Create
+PATCH	/:company/api/:table/:id					Api.Update
+DELETE	/:company/api/:table/:id/:field				Api.Delete
+DELETE	/:company/api/:table/:id					Api.Delete
+
+GET		/:company/api/:table/count					Api.Count
+GET		/:company/api/:table/newcount					Api.NewCount
+GET		/:company/api/:table/total					Api.Total
+GET		/:company/api/:table/:key/:field			Api.Detail
+GET		/:company/api/:table/:field					Api.Detail
+
+GET		/:company/api/:action						Api.:action
+GET		/:company/api								Api.Detail
+
+# CRON JOBS
+GET		/:company/cron/:action						Cron.:action
+GET		/cron/:action								Cron.:action
+
+# COMPANY BACKEND and SUPER BACKEND
+*		/:company/adm/member/:action/:id			BackendMember.:action
+*		/:company/adm/member/:action/				BackendMember.:action
+GET		/:company/adm/member						BackendMember.Index
+
+*		/:company/adm/role/:action/:id				BackendRole.:action
+*		/:company/adm/role/:action					BackendRole.:action
+GET		/:company/adm/role							BackendRole.Index
+
+*		/:company/adm/level/:action/:id				BackendLevel.:action
+*		/:company/adm/level/:action					BackendLevel.:action
+GET		/:company/adm/level							BackendLevel.Index
+
+*		/:company/adm/badge/:action/:id				BackendBadge.:action
+*		/:company/adm/badge/:action					BackendBadge.:action
+GET		/:company/adm/badge							BackendBadge.Index
+
+*		/:company/adm/notification/:action/:id		BackendNotification.:action
+*		/:company/adm/notification/:action			BackendNotification.:action
+GET		/:company/adm/notification					BackendNotification.Index
+
+*		/:company/adm/tag/:action/:id				BackendTag.:action
+*		/:company/adm/tag/:action					BackendTag.:action
+GET		/:company/adm/tag							BackendTag.Index
+
+*		/:company/adm/banner/:action/:id			BackendBanner.:action
+*		/:company/adm/banner/:action				BackendBanner.:action
+GET		/:company/adm/banner						BackendBanner.Index
+
+*		/:company/adm/shout/:action/:id				BackendShout.:action
+*		/:company/adm/shout/:action					BackendShout.:action
+GET		/:company/adm/shout							BackendShout.Index
+
+*		/:company/adm/page/:action/:id				BackendPage.:action
+*		/:company/adm/page/:action					BackendPage.:action
+GET		/:company/adm/page							BackendPage.Index
+
+*		/:company/adm/feedback/:action/:id			BackendFeedback.:action
+*		/:company/adm/feedback/:action				BackendFeedback.:action
+GET		/:company/adm/feedback						BackendFeedback.Index
+
+*		/:company/adm/product/:action/:id			BackendProduct.:action
+*		/:company/adm/product/:action				BackendProduct.:action
+GET		/:company/adm/product						BackendProduct.Index
+
+*		/:company/adm/productcategory/:action/:id	BackendProductCategory.:action
+*		/:company/adm/productcategory/:action		BackendProductCategory.:action
+GET		/:company/adm/productcategory				BackendProductCategory.Index
+
+*		/:company/adm/book/:action/:id				BackendBook.:action
+*		/:company/adm/book/:action					BackendBook.:action
+GET		/:company/adm/book							BackendBook.Index
+
+*  		/:company/adm/bookcategory/:action/:id   	BackendBookCategory.:action
+*  		/:company/adm/bookcategory/:action   		BackendBookCategory.:action
+GET  	/:company/adm/bookcategory    				BackendBookCategory.Index
+
+*		/:company/adm/event/:action/:id				BackendEvent.:action
+*		/:company/adm/event/:action					BackendEvent.:action
+GET		/:company/adm/event							BackendEvent.Index
+
+GET		/:company/adm/attd/:action/:id				BackendAttendance.:action
+GET		/:company/adm/attd/:action					BackendAttendance.:action
+GET		/:company/adm/attd							BackendAttendance.Index
+POST	/:company/adm/attd/:id						BackendAttendance.Absent
+
+*		/:company/adm/download/:action/:id			BackendDownload.:action
+*		/:company/adm/download/:action				BackendDownload.:action
+GET		/:company/adm/download						BackendDownload.Index
+
+*		/:company/adm/filetype/:action/:id			BackendFiletype.:action
+*		/:company/adm/filetype/:action				BackendFiletype.:action
+GET		/:company/adm/filetype						BackendFiletype.Index
+
+*		/:company/adm/circle/:action/:id			BackendCircle.:action
+*		/:company/adm/circle/:action				BackendCircle.:action
+GET		/:company/adm/circle						BackendCircle.Index
+
+*		/:company/adm/promotion/:action/:id			BackendPromotion.:action
+*		/:company/adm/promotion/:action				BackendPromotion.:action
+GET		/:company/adm/promotion						BackendPromotion.Index
+
+*		/:company/adm/promotiontag/:action/:id		BackendPromotionTag.:action
+*		/:company/adm/promotiontag/:action			BackendPromotionTag.:action
+GET		/:company/adm/promotiontag					BackendPromotionTag.Index
+
+*		/:company/adm/currency/:action/:id			BackendCurrency.:action
+*		/:company/adm/currency/:action				BackendCurrency.:action
+GET		/:company/adm/currency						BackendCurrency.Index
+
+*		/:company/adm/asset/:action/:id				BackendAsset.:action
+*		/:company/adm/asset/:action					BackendAsset.:action
+GET		/:company/adm/asset							BackendAsset.Index
+
+*		/:company/adm/assetcategory/:action/:id		BackendAssetCategory.:action
+*		/:company/adm/assetcategory/:action			BackendAssetCategory.:action
+GET		/:company/adm/assetcategory					BackendAssetCategory.Index
+
+*		/:company/adm/service/:action/:id			BackendService.:action
+*		/:company/adm/service/:action				BackendService.:action
+GET		/:company/adm/service						BackendService.Index
+
+*		/:company/adm/skill/:action/:id				BackendSkill.:action
+*		/:company/adm/skill/:action					BackendSkill.:action
+GET		/:company/adm/skill							BackendSkill.Index
+
+*		/:company/adm/visitation/:action/:id		BackendVisitation.:action
+*		/:company/adm/visitation/:action			BackendVisitation.:action
+GET		/:company/adm/visitation					BackendVisitation.Index
+
+*		/:company/adm/visitationrequest/:action/:id	BackendVisitationRequest.:action 
+*		/:company/adm/visitationrequest/:action		BackendVisitationRequest.:action 
+GET		/:company/adm/visitationrequest				BackendVisitationRequest.Index 
+
+*		/:company/adm/schoolreport/:action/:id		BackendSchoolreport.:action
+*		/:company/adm/schoolreport/:action			BackendSchoolreport.:action
+GET		/:company/adm/schoolreport					BackendSchoolreport.Index
+
+*		/:company/adm/dormitory/:action/:id			BackendDormitory.:action
+*		/:company/adm/dormitory/:action				BackendDormitory.:action
+GET		/:company/adm/dormitory						BackendDormitory.Index
+
+*		/:company/adm/company/:action/:id			BackendCompany.:action
+*		/:company/adm/company/:action				BackendCompany.:action
+GET		/:company/adm/company						BackendCompany.Index
+
+*		/:company/adm/package/:action/:id			BackendPackage.:action
+*		/:company/adm/package/:action				BackendPackage.:action
+GET		/:company/adm/package						BackendPackage.Index
+
+*		/:company/adm/emailtemplate/:action/:id		BackendEmailtemplate.:action
+*		/:company/adm/emailtemplate/:action			BackendEmailtemplate.:action
+GET		/:company/adm/emailtemplate					BackendEmailtemplate.Index
+
+*		/:company/adm/benefit/:action/:id			BackendBenefit.:action
+*		/:company/adm/benefit/:action				BackendBenefit.:action
+GET		/:company/adm/benefit						BackendBenefit.Index
+
+*		/:company/adm/subscription/:action/:id		BackendSubscription.:action
+*		/:company/adm/subscription/:action			BackendSubscription.:action
+GET		/:company/adm/subscription					BackendSubscription.Index
+
+*		/:company/adm/homepage/:action/:id			BackendHomepage.:action
+*		/:company/adm/homepage/:action			    BackendHomepage.:action
+GET		/:company/adm/homepage				        BackendHomepage.Index
+
+*		/:company/adm/transaction/:action/:param1/:param2 BackendTransaction.:action
+*		/:company/adm/transaction/:action/:id		BackendTransaction.:action
+*		/:company/adm/transaction/:action/:id		BackendTransaction.:action
+*		/:company/adm/transaction/:action			BackendTransaction.:action
+GET		/:company/adm/transaction					BackendTransaction.Index
+
+*		/:company/adm/quiz/:action/:id			    BackendQuiz.:action
+*		/:company/adm/quiz/:action			        BackendQuiz.:action
+GET		/:company/adm/quiz				            BackendQuiz.Index
+
+*		/:company/adm/report/:action/:id			BackendReport.:action
+*		/:company/adm/report/:action			    BackendReport.:action
+GET		/:company/adm/report				        BackendReport.Index
+
+*		/:company/adm/:action						BackendDashboard.:action
+GET		/:company/adm								BackendDashboard.Index
+
+
+
+# MEMBER AREA
+GET     /:company/m/guest/:id/:ev                   MemberAttendance.Guest
+
+*		/:company/m/asset/list/:id/:page			MemberAsset.Index
+*		/:company/m/asset/list/:id					MemberAsset.Index
+*		/:company/m/asset/:action/:id				MemberAsset.:action
+*		/:company/m/asset/:action					MemberAsset.:action
+
+*		/:company/m/leaverequest/list/:id/:page		MemberLeaveRequest.Index  
+*		/:company/m/leaverequest/list/:id			MemberLeaveRequest.Index  
+*		/:company/m/leaverequest/:action/:id		MemberLeaveRequest.:action  
+*		/:company/m/leaverequest/:action			MemberLeaveRequest.:action  
+
+*		/:company/m/overtime/list/:id/:page		    MemberOvertime.Index  
+*		/:company/m/overtime/list/:id			    MemberOvertime.Index  
+*		/:company/m/overtime/:action/:id		    MemberOvertime.:action  
+*		/:company/m/overtime/:action			    MemberOvertime.:action  
+
+*		/:company/m/benefitscheme/list/:id/:page	MemberBenefit.Index
+*		/:company/m/benefitscheme/list/:id			MemberBenefit.Index
+*		/:company/m/benefitscheme/:action/:id		MemberBenefit.:action
+*		/:company/m/benefitscheme/:action			MemberBenefit.:action
+
+*		/:company/m/salary/list/:id/:page			MemberSalary.Index
+*		/:company/m/salary/list/:id					MemberSalary.Index
+*		/:company/m/salary/:action/:id				MemberSalary.:action
+*		/:company/m/salary/:action					MemberSalary.:action
+
+*		/:company/m/loan/list/:id/:page		        MemberLoan.Index  
+*		/:company/m/loan/list/:id			        MemberLoan.Index  
+*		/:company/m/loan/:action/:id		        MemberLoan.:action  
+*		/:company/m/loan/:action			        MemberLoan.:action   
+
+*		/:company/m/warningletter/list/:id/:page	MemberWarningLetter.Index  
+*		/:company/m/warningletter/list/:id			MemberWarningLetter.Index  
+*		/:company/m/warningletter/:action/:id		MemberWarningLetter.:action  
+*		/:company/m/warningletter/:action			MemberWarningLetter.:action   
+
+*		/:company/m/:action/:id						MemberDashboard.:action
+*		/:company/m/:action							MemberDashboard.:action
+GET		/:company/m									MemberDashboard.Index
+
+# FRONTEND
+GET		/:company/migrate							App.Migrate
+GET		/super/cache								App.ClearCache
+GET		/super/git									App.GitPull
+GET		/super/test									App.Test
+GET		/super/email								App.TestEmail
+GET     /:company/generate                             BackendAsset.GenerateQRCode
+
+GET		/:action/:id								FrontendDashboard.:action
+GET		/:action									FrontendDashboard.:action
+GET		/											FrontendDashboard.Index
+
+# OTHERS
+*		/:controller/:action						:controller.:action
